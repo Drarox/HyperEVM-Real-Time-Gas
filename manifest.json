@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "HyperEVM Real-Time Gas",
+  "version": "1.0.0",
+  "description": "Track gas fees on HyperEVM network",
+  "permissions": [
+    "storage",
+    "alarms"
+  ],
+  "host_permissions": [
+    "https://rpc.hyperliquid.xyz/*",
+    "https://api.coingecko.com/*"
+  ],
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "action": {
+    "default_popup": "src/popup.html",
+    "default_title": "HyperEVM Real-Time Gas"
+  },
+  "icons": {
+    "16": "assets/icons/icon16.png",
+    "48": "assets/icons/icon48.png",
+    "128": "assets/icons/icon128.png"
+  }
+}

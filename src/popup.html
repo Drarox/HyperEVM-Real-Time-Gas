@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      width: 300px;
+      padding: 16px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      margin: 0;
+      background: linear-gradient(135deg, #072723 0%, #395d54ff 100%);
+      color: white;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .title {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 0;
+      color: #97FCE4;
+      text-shadow: 0 1px 2px rgba(7, 39, 35, 0.3);
+    }
+
+    .subtitle {
+      font-size: 12px;
+      opacity: 0.9;
+      margin: 4px 0 0 0;
+      color: #F6FEFD;
+    }
+
+    .hype-price {
+      font-size: 13px;
+      font-weight: 500;
+      margin: 8px 0 0 0;
+      color: #97FCE4;
+      text-shadow: 0 1px 2px rgba(7, 39, 35, 0.3);
+    }
+
+    .gas-container {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 16px;
+      backdrop-filter: blur(10px);
+    }
+
+    .gas-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .gas-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .gas-label {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      font-weight: 500;
+      color: #F6FEFD;
+    }
+
+    .gas-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 10px;
+      font-size: 14px;
+    }
+
+    .gas-icon.normal {
+      background-color: rgba(76, 175, 80, 0.15);
+      border: 1px solid rgba(76, 175, 80, 0.3);
+      color: #4CAF50;
+    }
+
+    .gas-icon.fast {
+      background-color: rgba(255, 152, 0, 0.15);
+      border: 1px solid rgba(255, 152, 0, 0.3);
+      color: #FF9800;
+    }
+
+    .gas-icon.instant {
+      background-color: rgba(244, 67, 54, 0.15);
+      border: 1px solid rgba(244, 67, 54, 0.3);
+      color: #F44336;
+    }
+
+    .gas-info {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    .gas-value {
+      font-size: 16px;
+      font-weight: 600;
+      color: #F6FEFD;
+    }
+
+    .gas-unit {
+      font-size: 12px;
+      opacity: 0.8;
+      margin-left: 4px;
+      color: #F6FEFD;
+    }
+
+    .gas-cost {
+      font-size: 11px;
+      opacity: 0.7;
+      margin-top: 2px;
+      color: #F6FEFD;
+    }
+
+    .status {
+      text-align: center;
+      font-size: 12px;
+      opacity: 0.9;
+      margin-bottom: 12px;
+      color: #F6FEFD;
+    }
+
+    .refresh-btn {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 8px;
+      padding: 10px;
+      color: #F6FEFD;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .refresh-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .loading {
+      opacity: 0.6;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <h1 class="title">HyperEVM Real-Time Gas</h1>
+    <p class="subtitle">Real-time gas fee tracker</p>
+    <div class="hype-price" id="hypePrice">HYPE: $--</div>
+  </div>
+
+  <div class="status" id="status">Loading...</div>
+
+  <div class="gas-container">
+    <div class="gas-row">
+      <span class="gas-label">
+        <span class="gas-icon normal">🚶</span>
+        Normal
+      </span>
+      <div class="gas-info">
+        <span class="gas-value" id="normalGas">--<span class="gas-unit">gwei</span></span>
+        <span class="gas-cost" id="normalCost">$--</span>
+      </div>
+    </div>
+    <div class="gas-row">
+      <span class="gas-label">
+        <span class="gas-icon fast">🏃</span>
+        Fast
+      </span>
+      <div class="gas-info">
+        <span class="gas-value" id="fastGas">--<span class="gas-unit">gwei</span></span>
+        <span class="gas-cost" id="fastCost">$--</span>
+      </div>
+    </div>
+    <div class="gas-row">
+      <span class="gas-label">
+        <span class="gas-icon instant">⚡</span>
+        Instant
+      </span>
+      <div class="gas-info">
+        <span class="gas-value" id="instantGas">--<span class="gas-unit">gwei</span></span>
+        <span class="gas-cost" id="instantCost">$--</span>
+      </div>
+    </div>
+  </div>
+
+  <button class="refresh-btn" id="refreshBtn">Refresh Gas Prices</button>
+
+  <script src="popup.js"></script>
+</body>
+
+</html>
