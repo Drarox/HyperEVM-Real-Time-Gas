@@ -14,8 +14,33 @@
     }
 
     .header {
+      position: relative;
       text-align: center;
       margin-bottom: 15px;
+    }
+
+    .info-btn {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #F6FEFD;
+      font-size: 11px;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .info-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+      border-color: rgba(255, 255, 255, 0.4);
     }
 
     .title {
@@ -153,11 +178,99 @@
     .loading {
       opacity: 0.6;
     }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+    }
+
+    .modal-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: linear-gradient(135deg, #072723 0%, #395d54ff 100%);
+      border-radius: 12px;
+      padding: 20px;
+      width: 260px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .modal-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #97FCE4;
+    }
+
+    .close-btn {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #F6FEFD;
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .close-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .modal-body {
+      color: #F6FEFD;
+      line-height: 1.5;
+    }
+
+    .info-item {
+      margin-bottom: 12px;
+      font-size: 13px;
+    }
+
+    .info-label {
+      font-weight: 500;
+      color: #97FCE4;
+      margin-bottom: 4px;
+    }
+
+    .info-value {
+      opacity: 0.9;
+    }
+
+    .info-link {
+      color: #97FCE4;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .info-link:hover {
+      opacity: 0.8;
+    }
   </style>
 </head>
 
 <body>
   <div class="header">
+    <button class="info-btn" id="infoBtn">i</button>
     <h1 class="title">HyperEVM Real-Time Gas</h1>
     <p class="subtitle">Real-time gas fee tracker</p>
     <div class="hype-price" id="hypePrice">HYPE: $--</div>
@@ -199,6 +312,39 @@
   </div>
 
   <button class="refresh-btn" id="refreshBtn">Refresh Gas Prices</button>
+
+  <!-- About Modal -->
+  <div class="modal" id="aboutModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title">About</div>
+        <button class="close-btn" id="closeBtn">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="info-item">
+          <div class="info-label">Made by</div>
+          <div class="info-value">
+            <a href="https://github.com/Drarox/" class="info-link" target="_blank">Drarox</a>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Version</div>
+          <div class="info-value" id="versionInfo">--</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Open Source</div>
+          <div class="info-value">
+            <a href="https://github.com/Drarox/HyperEVM-Real-Time-Gas" class="info-link" target="_blank">GitHub
+              Repository</a>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Copyright</div>
+          <div class="info-value" id="copyrightInfo">© HyperEVM Real-Time Gas</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="popup.js"></script>
 </body>

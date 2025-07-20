@@ -8,6 +8,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     const instantCostEl = document.getElementById('instantCost');
     const hypePriceEl = document.getElementById('hypePrice');
     const refreshBtn = document.getElementById('refreshBtn');
+    const infoBtn = document.getElementById('infoBtn');
+    const aboutModal = document.getElementById('aboutModal');
+    const closeBtn = document.getElementById('closeBtn');
+    const versionInfo = document.getElementById('versionInfo');
+    const copyrightInfo = document.getElementById('copyrightInfo');
 
     // Load and display gas data
     async function loadGasData() {
@@ -105,8 +110,42 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
+    // Load extension version from manifest
+    async function loadExtensionInfo() {
+        try {
+            const manifest = chrome.runtime.getManifest();
+            versionInfo.textContent = `v${manifest.version}`;
+            
+            // Set current year for copyright
+            const currentYear = new Date().getFullYear();
+            copyrightInfo.textContent = `© ${currentYear} HyperEVM Real-Time Gas`;
+        } catch (error) {
+            console.error('Error loading extension info:', error);
+            versionInfo.textContent = 'Unknown';
+            copyrightInfo.textContent = '© HyperEVM Real-Time Gas';
+        }
+    }
+
+    // Modal functionality
+    function openModal() {
+        aboutModal.style.display = 'block';
+    }
+
+    function closeModal() {
+        aboutModal.style.display = 'none';
+    }
+
     // Event listeners
     refreshBtn.addEventListener('click', refreshGasData);
+    infoBtn.addEventListener('click', openModal);
+    closeBtn.addEventListener('click', closeModal);
+    
+    // Close modal when clicking outside
+    aboutModal.addEventListener('click', (e) => {
+        if (e.target === aboutModal) {
+            closeModal();
+        }
+    });
 
     // Listen for storage changes
     chrome.storage.onChanged.addListener((changes, namespace) => {
@@ -117,4 +156,5 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Initial load
     await loadGasData();
+    await loadExtensionInfo();
 });
