@@ -1,2 +1,14 @@
-.vscode
 generate-icons.html
+.DS_Store
+node_modules
+Thumbs.db
+.vscode
+.idea
+.qodo
+
+*.sublime-project
+*.sublime-workspace
+
+# Build directory
+dist
+output
