@@ -6,7 +6,7 @@
 
 **A privacy-focused browser extension for tracking real-time gas fees on the HyperEVM network**
 
-[![Chrome Web Store](https://img.shields.io/badge/Chrome-Install-4285F4?style=for-the-badge&logo=google-chrome&logoColor=white)](https://chrome.google.com/webstore)
+[![Chrome Web Store](https://img.shields.io/badge/Chrome-Install-4285F4?style=for-the-badge&logo=google-chrome&logoColor=white)](https://chromewebstore.google.com/detail/hyperevm-real-time-gas/lbmelajajgmfmhfplcfhbgjlngmhbplm)
 [![Firefox Add-ons](https://img.shields.io/badge/Firefox-Install-FF7139?style=for-the-badge&logo=firefox&logoColor=white)](https://addons.mozilla.org/firefox)
 [![GitHub](https://img.shields.io/badge/GitHub-Source-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Drarox/HyperEVM-Real-Time-Gas)
 
@@ -34,10 +34,10 @@
 
 ## 🔧 Installation
 
-### Chrome Web Store
-[![Chrome Web Store](https://img.shields.io/badge/Install%20from-Chrome%20Web%20Store-4285F4?style=for-the-badge&logo=google-chrome&logoColor=white)](https://chrome.google.com/webstore)
+### Chrome Web Store (Chrome, Edge, Brave, Opera, etc.)
+[![Chrome Web Store](https://img.shields.io/badge/Install%20from-Chrome%20Web%20Store-4285F4?style=for-the-badge&logo=google-chrome&logoColor=white)](https://chromewebstore.google.com/detail/hyperevm-real-time-gas/lbmelajajgmfmhfplcfhbgjlngmhbplm)
 
-### Firefox Add-ons
+### Firefox Add-ons (Soon)
 [![Firefox Add-ons](https://img.shields.io/badge/Install%20from-Firefox%20Add--ons-FF7139?style=for-the-badge&logo=firefox&logoColor=white)](https://addons.mozilla.org/firefox)
 
 ### Manual Installation (Developer Mode)
@@ -47,7 +47,7 @@
    git clone https://github.com/Drarox/HyperEVM-Real-Time-Gas.git
    ```
 
-2. **Chrome**:
+2. **Chromium-based browsers**:
    - Open `chrome://extensions/`
    - Enable "Developer mode"
    - Click "Load unpacked"
@@ -82,7 +82,6 @@ USD costs are calculated using live HYPE token prices from CoinGecko API with sm
 - ✅ **Local data storage only**
 - ✅ **Open source** and auditable
 - ✅ **Minimal API calls** with smart caching
-- ✅ **Works offline** after initial load
 
 ### Network Requests
 The extension only makes requests to:
