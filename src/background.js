@@ -1,5 +1,5 @@
 const HYPEREVM_RPC = 'https://rpc.hyperliquid.xyz/evm';
-const UPDATE_INTERVAL = 5; // seconds
+const UPDATE_INTERVAL = 5000; // 5 seconds
 const PRICE_CACHE_DURATION = 60000; // 60 seconds cache duration
 
 let gasData = {
@@ -150,21 +150,13 @@ async function initialize() {
   // Fetch initial data
   await fetchGasPrice();
 
-  // Set up periodic updates using Chrome alarms
-  const intervalInMinutes = UPDATE_INTERVAL / 60;
-  chrome.alarms.create('gasUpdate', { periodInMinutes: intervalInMinutes });
+  // Set up periodic updates using setInterval
+  setInterval(fetchGasPrice, UPDATE_INTERVAL);
 }
 
 // Event listeners
 chrome.runtime.onStartup.addListener(initialize);
 chrome.runtime.onInstalled.addListener(initialize);
-
-// Handle alarm for periodic gas price updates
-chrome.alarms.onAlarm.addListener((alarm) => {
-  if (alarm.name === 'gasUpdate') {
-    fetchGasPrice();
-  }
-});
 
 // Handle messages from popup
 chrome.runtime.onMessage.addListener((request, _sender, sendResponse) => {

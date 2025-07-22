@@ -4,8 +4,7 @@
   "version": "1.0.0",
   "description": "Track gas fees in real-time on HyperEVM network",
   "permissions": [
-    "storage",
-    "alarms"
+    "storage"
   ],
   "host_permissions": [
     "https://rpc.hyperliquid.xyz/*",
