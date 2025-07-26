@@ -11,7 +11,9 @@
     "https://api.coingecko.com/*"
   ],
   "background": {
-    "service_worker": "src/background.js"
+    "scripts": [
+      "src/background.js"
+    ]
   },
   "action": {
     "default_popup": "src/popup.html",
@@ -21,5 +23,10 @@
     "16": "assets/icons/icon16.png",
     "48": "assets/icons/icon48.png",
     "128": "assets/icons/icon128.png"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "hyperevm-gas@drarox.dev"
+    }
   }
 }

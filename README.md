@@ -7,7 +7,7 @@
 **A privacy-focused browser extension for tracking real-time gas fees on the HyperEVM network**
 
 [![Chrome Web Store](https://img.shields.io/badge/Chrome-Install-4285F4?style=for-the-badge&logo=google-chrome&logoColor=white)](https://chromewebstore.google.com/detail/hyperevm-real-time-gas/lbmelajajgmfmhfplcfhbgjlngmhbplm)
-[![Firefox Add-ons](https://img.shields.io/badge/Firefox-Install-FF7139?style=for-the-badge&logo=firefox&logoColor=white)](https://addons.mozilla.org/firefox)
+[![Firefox Add-ons](https://img.shields.io/badge/Firefox-Install-FF7139?style=for-the-badge&logo=firefox&logoColor=white)](https://addons.mozilla.org/addon/hyperevm-real-time-gas/)
 [![GitHub](https://img.shields.io/badge/GitHub-Source-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Drarox/HyperEVM-Real-Time-Gas)
 
 </div>
@@ -37,8 +37,8 @@
 ### Chrome Web Store (Chrome, Edge, Brave, Opera, etc.)
 [![Chrome Web Store](https://img.shields.io/badge/Install%20from-Chrome%20Web%20Store-4285F4?style=for-the-badge&logo=google-chrome&logoColor=white)](https://chromewebstore.google.com/detail/hyperevm-real-time-gas/lbmelajajgmfmhfplcfhbgjlngmhbplm)
 
-### Firefox Add-ons (Soon)
-[![Firefox Add-ons](https://img.shields.io/badge/Install%20from-Firefox%20Add--ons-FF7139?style=for-the-badge&logo=firefox&logoColor=white)](https://addons.mozilla.org/firefox)
+### Firefox Add-ons
+[![Firefox Add-ons](https://img.shields.io/badge/Install%20from-Firefox%20Add--ons-FF7139?style=for-the-badge&logo=firefox&logoColor=white)](https://addons.mozilla.org/addon/hyperevm-real-time-gas/)
 
 ### Manual Installation (Developer Mode)
 
