@@ -138,6 +138,8 @@ function getGasColor(gasPrice) {
   return '#F44336'; // Red - high
 }
 
+let intervalId;
+
 // Initialize and start periodic updates
 async function initialize() {
   // Load existing data
@@ -150,13 +152,55 @@ async function initialize() {
   // Fetch initial data
   await fetchGasPrice();
 
-  // Set up periodic updates using setInterval
-  setInterval(fetchGasPrice, UPDATE_INTERVAL);
+  // Start periodic updates with backup alarm
+  startPeriodicUpdates();
+}
+
+function startPeriodicUpdates() {
+  // Clear any existing interval
+  if (intervalId) {
+    clearInterval(intervalId);
+  }
+  
+  // Primary: setInterval for 5-second updates (works in dev and most cases)
+  intervalId = setInterval(fetchGasPrice, UPDATE_INTERVAL);
+  
+  // Backup: alarm for 30-second updates (survives sleep/wake)
+  chrome.alarms.create('gasUpdateBackup', { periodInMinutes: 0.5 });
 }
 
 // Event listeners
 chrome.runtime.onStartup.addListener(initialize);
 chrome.runtime.onInstalled.addListener(initialize);
+
+// Handle system suspend/resume events
+chrome.runtime.onSuspend.addListener(() => {
+  console.log('Extension suspending, clearing interval');
+  if (intervalId) {
+    clearInterval(intervalId);
+  }
+});
+
+chrome.runtime.onSuspendCanceled.addListener(() => {
+  console.log('Extension suspend canceled, restarting updates');
+  startPeriodicUpdates();
+});
+
+// Handle backup alarm (survives sleep/wake cycles)
+chrome.alarms.onAlarm.addListener((alarm) => {
+  if (alarm.name === 'gasUpdateBackup') {
+    // Check if our main timer is still working
+    const now = Date.now();
+    const lastUpdate = gasData.lastUpdate ? new Date(gasData.lastUpdate).getTime() : 0;
+    
+    // If last update was more than 8 seconds ago, main timer probably died
+    if (now - lastUpdate > 8000) {
+      console.log('Main timer died, backup alarm updating');
+      fetchGasPrice();
+      startPeriodicUpdates(); // Restart main timer
+    }
+  }
+});
 
 // Handle messages from popup
 chrome.runtime.onMessage.addListener((request, _sender, sendResponse) => {
